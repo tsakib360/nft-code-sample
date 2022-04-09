@@ -36,9 +36,12 @@ function Dashboard() {
             const response = await contract.methods.mint(metadataurl).send({ from: user.get("ethAddress") });
             const tokenId = response.events.Transfer.returnValues.tokenId;
             alert(`NFT successfully minted. Contact Addres: ${contactAddress} and Token ID: ${tokenId}`);
+            console.log(response);
+            // const tokenId = response.events.TransferSingle.returnValues.id;
+            // alert(`NFT successfully minted. Contact Addres: ${contactAddress} and Token ID: ${tokenId}`);
         } catch (err) {
             console.error(err);
-            alert('Something went wrong!');
+            alert(err);
         }
     }
   return (
